@@ -1,0 +1,146 @@
+Bài 2: CSS
+
+2.1. CSS là gì?
+- Ngôn ngữ dùng để thiết lập các định dạng cho trang web
+
+2.2. Các cách sử dụng CSS trên trang web
+
+- Có 3 cách sử dụng CSS:
+
+    + Inline CSS: Qui tắc định dạng được viết trực tiếp
+      trong thuộc tính style của thẻ/phần tử.
+
+    + Internal CSS: Qui tắc định dạng được viết trong cặp thẻ
+      <style></style> nằm ở phần <head></head> của trang.
+
+    + External CSS (khuyên dùng): Qui tắc định dạng được viết
+      ở 1 file có phần mở rộng là css, và liên kết vào trang 
+      web bằng thẻ <link>
+      Ưu điểm:
+        - Tách bạch code HTML và CSS 
+        - Tính sử dụng cao: viết 1 file, link vào nhiều file
+
+- Mức độ ưu tiên của CSS:
+
+    - Inline CSS có mức độ ưu tiên cao nhất.
+    - Internal CSS và External CSS có mức ưu tiên như nhau:
+      Qui tắc nào viết sau thì qui tắc đó được áp dụng. 
+
+2.3. Cách định dạng cho các phần tử/thẻ 
+
+- Để thiết lập qui tắc định dạng cho 1 phần tử nào đó, sử 
+  dụng cách viết:
+        selector {
+            thuộc_tính: giá_trị;
+            thuộc_tính_2 : giá_trị_2,
+            ...
+            thuộc_tính_n : giá_trị_n;            
+        }
+- selector (bộ chọn): là một cách viết để xác định đúng phần
+  tử mà chúng ta cần định dạng.
+  Có 4 cách viết cơ bản của selector:
+
+  +  Sử dụng dấu * để định dạng cho tất cả các phần tử
+        * {
+
+        }
+    Thường được viết 1 lần trong file CSS để thiết lập các 
+    qui tắc định dạng chung.
+
+  + Sử dụng tên thẻ để định dạng cho các thẻ
+        p {
+
+        }  
+  + Định dạng cho phần tử dựa vào id của phần tử đó, sử dụng
+    cách sau:
+        #id_phần_tử {
+
+        }
+  + Định dạng cho các phần tử dựa vào class của phần tử, sử dụng
+    cách viết:
+        .tên_class {
+            
+        }
+
+    Mức độ ưu tiên (từ cao đến thấp)
+        id => class => tag => *
+
+- Một số qui tắc kết hợp selector cơ bản:
+
+    + Sử dụng dấu phẩy phân cách các selector: định dạng
+    cho nhiều selector
+        div, p, h1, #header, .about {
+            color: red;
+        }
+    + Định dạng cho con, cháu, chút, chít,... của selector1
+        selector1 selector2 {
+
+        }
+    + Định dạng cho con của selector1:
+        selector1 > selector2 {
+
+        }
+    + Định dạng cho em dựa vào đặc điểm của anh:
+        selector1+selector2 {
+            /* Định dạng cho selector2 nếu anh nó là seletor1 */            
+        }
+
+2.4 thiết kê layout (bố cục) cho trang web 
+nội dung:
++ bõ model
++ display và possition
++ float
++ thiết kế layout co trang web
+thiết kế layout ( làm bố cục) là gì?
+- theiets kế layout tức là sử dụng thẻ html ( thường là thẻ div ) và css để phân vùng trên trang web
+- có mốt sô phương pháp hay dùng để thiết kế layout như sau:
+  +sử dụng float
+  + sử dụng flex box
+  + sử đụng grid
+  2. 4. 1 box model
+  mỗi phần tử khi hiển thị trên trang web sẽ đc bố trí trong vùng hình chữ nhật và cs cách hiển thị dựa trên 1 trong 2 loại: block và  Inline
+ theo thứ tự từu ngoài vào trong vùng hiển thị bao gồm các vùng sau:
+ + margin: (lề) khoảng cách phần tử vs các phần tử lân cận hoặc phần tử bao ngoài 
+ + border: đường viền xung quanh hiển thị
+ + padding: là vùng đệm tạo khoảng cách giữa đường viền và nội dung trong (content)
+ +content nội dung
+
+ margin/border/padding: bao gồm các giá trị cho top(trên), right(phải),  bottom ( dưới)left(trái), có thể thiết lập thông qua các thuộc tính:
++ margin-top
++ margin-right
++ margin-bottom
++ margin-left
+ thay vì phải thiết lập riêng cho từng giá trị top, right, bottom, left. ta có thể viết gộp theo dạng như ví dụ sau:
+ margin: 10px 5px 20px 50px;
+padding:10px 5px 20px 50px;
+
+đối với các phần tử có cách hiển thị dạng khối, có thể sử dụng thuộc tính width và height để thiết lập độ rộng và chiều cao cho vùng hiển thị(?? tính như thế nào??)
+
+có 2 cách tính dựa vào giá trị của thuộc tính box-sizing: 
++ content-box : kích thước quy định tính cho phần nội dung,còn có kích thước thật sự sẽ tính thêm phần padding và border
++ border-box : kích thước quy định tính cho phần viền( kích thước thật sự)
+ nên sử dụng chế độ border-box dể thuận lợi cho việc tính toán kích thước hiển thị của các phần tử
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+2.4.2. display và possition
+- display: chế độ/ cách hiển thị của phần tử trên trang web.
+- possition: vị trí(tọa độ) hiển thị của phần tử ở đâu trên trang web. 
+
+* display:
++ Inline
++ block
++Inline-block
++ Inline-table
++table-cell
++none
+*possition:
+mỗi phần tử có vị trí hiển thị đc xác định bởi 4 thuộc tính top left right bottom
+possition cso thể nhận các giá trị :  
+  + static ( mặc định): phần tử xuất hiện tại vị trí mặt định của nó ( tiếp sau phần tử trước, trước phần tử sau)
+  các thuộc tính định 
+  + 
+  2.4.3 thiết kế layout bằng float
+  
